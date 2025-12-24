@@ -6,7 +6,7 @@
 /*   By: rshikder <rshikder@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 20:40:27 by rshikder          #+#    #+#             */
-/*   Updated: 2025/12/24 18:08:28 by rshikder         ###   ########.fr       */
+/*   Updated: 2025/12/24 20:07:55 by rshikder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,3 +34,4 @@ void	insert_af(s_node **head, int nb)
 	current->next = new_node;
 	new_node->prev = current;
 }
+

@@ -26,6 +26,7 @@ int main(int ac, char **av)
 	}
 	// if ft_sorted(stack_a)
 	// 	free(stack_a);
+	swap(stack_a);
 	while (stack_a != NULL)
 	{
 		ft_printf("%d\n", stack_a->nb);

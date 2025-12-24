@@ -1,7 +1,7 @@
  .SILENT:
 
 NAME = push_swap
-SRCS = main.c push_swap.c
+SRCS = main.c push_swap.c ft_command.c
 OBJS = ${SRCS:.c=.o}
 CC = cc
 CFLAGS = -Wall -Wextra -Werror

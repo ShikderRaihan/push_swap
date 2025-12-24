@@ -14,6 +14,7 @@ typedef struct p_node
 }s_node;
 
 void	insert_af(s_node **stack, int nb);
+
 //handle error
 
 //stack initiation
@@ -23,6 +24,11 @@ void	insert_af(s_node **stack, int nb);
 //stack utils
 
 //commands
+void swap(s_node *head);
+void sa(s_node *stack_a);
+void sb(s_node *stack_b);
+void ss(void);
+
 
 //algorithms
 
