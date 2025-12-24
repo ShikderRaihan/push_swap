@@ -1,0 +1,40 @@
+ .SILENT:
+
+NAME = push_swap
+SRCS = main.c push_swap.c
+OBJS = ${SRCS:.c=.o}
+CC = cc
+CFLAGS = -Wall -Wextra -Werror
+LIBFT_DIR = ./Libft
+FT_PRINTF_DIR = ./ft_printf
+LIBFT = ${LIBFT_DIR}/libft.a
+FT_PRINTF = ${FT_PRINTF_DIR}/libftprintf.a
+
+all: ${NAME}
+
+${NAME}: ${OBJS} ${LIBFT} ${FT_PRINTF}
+	${CC} ${CFLAGS} -o ${NAME} ${OBJS} -L${LIBFT_DIR} -L${FT_PRINTF_DIR} -lft -lftprintf
+
+${LIBFT}:
+	make -C ${LIBFT_DIR}
+
+${FT_PRINTF}:
+	make -C ${FT_PRINTF_DIR}
+
+.c.o:
+	${CC} ${CFLAGS} -c ${@:.o=.c} -o ${@:.c=.o}
+
+clean: 
+	${RM} ${OBJS}
+	make -C ${LIBFT_DIR} clean
+	make -C ${FT_PRINTF_DIR} clean
+
+fclean: clean 
+	${RM} ${NAME}
+	make -C ${LIBFT_DIR} fclean
+	make -C ${FT_PRINTF_DIR} fclean
+
+re: fclean all 
+
+
+.PHONY: all clean fclean re
