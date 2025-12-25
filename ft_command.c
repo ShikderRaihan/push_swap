@@ -6,7 +6,7 @@
 /*   By: rshikder <rshikder@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 18:16:23 by rshikder          #+#    #+#             */
-/*   Updated: 2025/12/24 21:36:12 by rshikder         ###   ########.fr       */
+/*   Updated: 2025/12/25 20:14:53 by rshikder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,25 +47,42 @@ void swap(s_node *head)
 
 void sa(s_node *stack_a)
 {
-	swap(stack_a);
-	ft_printf("sa\n");
+	if (stack_a && stack_a->next)
+	{
+		swap(stack_a);
+		ft_printf("sa\n");
+	}
 }
 
 
 void sb(s_node *stack_b)
 {
-	swap(stack_b);
-	ft_printf("sb\n");
+	if (stack_b && stack_b->next)
+	{
+		swap(stack_b);
+		ft_printf("sb\n");
+	}
 }
 
-void ss(void)
+void ss(s_node *stack_a, s_node *stack_b)
 {
-	swap(stack_a);
-	swap(stack_b);
-	ft_printf("ss\n");
+		int i = 0;
+
+    if (stack_a && stack_a->next)
+    {
+        swap(stack_a);
+        i = 1;
+    }
+    if (stack_b && stack_b->next)
+    {
+        swap(stack_b);
+        i = 1;
+    }
+    if (i)
+        ft_printf("ss\n");
 }
 
-void push(s_node **stack_a, s_node **stack_b, char swi)
+void push(s_node **stack_a, s_node **stack_b)
 {
 	s_node *tmp;
 	
@@ -80,8 +97,128 @@ void push(s_node **stack_a, s_node **stack_b, char swi)
 		(*stack_a)->prev = tmp;
 	tmp->prev = NULL;
 	(*stack_a)= tmp;
-	if(swi == 'a')
+}
+
+void pa(s_node **stack_a, s_node **stack_b)
+{
+	if (*stack_b)
+	{
+		push(stack_a, stack_b);
 		ft_printf("pa\n");
-	else if(swi == 'b')
+	}
+}
+void pb(s_node **stack_b, s_node **stack_a)
+{
+	if (*stack_a)
+	{
+		push(stack_b, stack_a);
 		ft_printf("pb\n");
+	}
+}
+
+void rotate(s_node **head)
+{
+	s_node *first;
+	s_node *last;
+	
+	if(*head == NULL || (*head)->next == NULL)
+		return ;
+	first = *head;
+	*head = first->next;
+	(*head)->prev = NULL;
+	last = *head;
+	while(last->next != NULL)
+		last = last->next;
+	last->next = first;
+	first->prev = last;
+	first->next = NULL;	
+}
+
+void ra(s_node **stack_a)
+{
+	if (*stack_a && (*stack_a)->next)
+	{
+		rotate(stack_a);
+		ft_printf("ra\n");
+	}
+}
+
+void rb(s_node **stack_b)
+{
+	if (*stack_b && (*stack_b)->next)
+	{
+		rotate(stack_b);
+		ft_printf("rb\n");
+    }
+}
+
+void rr(s_node **stack_a, s_node **stack_b)
+{
+	int i = 0;
+
+    if (*stack_a && (*stack_a)->next)
+    {
+        rotate(stack_a);
+        i = 1;
+    }
+    if (*stack_b && (*stack_b)->next)
+    {
+        rotate(stack_b);
+        i = 1;
+    }
+    if (i)
+        ft_printf("rr\n");
+}
+void reverse_rotate(s_node **head)
+{
+	s_node *first;
+	s_node *last;
+	
+	if(*head == NULL || (*head)->next == NULL)
+		return ;
+	first = *head;
+	last = *head;
+	while(last->next != NULL)
+		last = last->next;
+	last->prev->next = NULL;
+	last->prev = NULL;
+	last->next = first;
+	first->prev = last;
+	*head = last;
+}
+
+void rra(s_node **stack_a)
+{
+	if (*stack_a && (*stack_a)->next)
+	{
+		reverse_rotate(stack_a);
+		ft_printf("rra\n");
+	}
+}
+
+void rrb(s_node **stack_b)
+{
+	if (*stack_b && (*stack_b)->next)
+	{
+		reverse_rotate(stack_b);
+		ft_printf("rrb\n");
+    }
+}
+
+void rrr(s_node **stack_a, s_node **stack_b)
+{
+	int i = 0;
+
+    if (*stack_a && (*stack_a)->next)
+    {
+        reverse_rotate(stack_a);
+        i = 1;
+    }
+    if (*stack_b && (*stack_b)->next)
+    {
+        reverse_rotate(stack_b);
+        i = 1;
+    }
+    if (i)
+        ft_printf("rrr\n");
 }

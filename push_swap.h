@@ -27,9 +27,18 @@ void	insert_af(s_node **stack, int nb);
 void swap(s_node *head);
 void sa(s_node *stack_a);
 void sb(s_node *stack_b);
-void ss(void);
-
-
+void ss(s_node *stack_a, s_node *stack_b);
+void push(s_node **stack_a, s_node **stack_b);
+void pa(s_node **stack_a, s_node **stack_b);
+void pb(s_node **stack_b, s_node **stack_a);
+void rotate(s_node **head);
+void ra(s_node **stack_a);
+void rb(s_node **stack_b);
+void rr(s_node **stack_a, s_node **stack_b);
+void reverse_rotate(s_node **head);
+void rra(s_node **stack_a);
+void rrb(s_node **stack_b);
+void rrr(s_node **stack_a, s_node **stack_b);
 //algorithms
 
 #endif

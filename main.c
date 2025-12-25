@@ -26,11 +26,18 @@ int main(int ac, char **av)
 	}
 	// if ft_sorted(stack_a)
 	// 	free(stack_a);
-	swap(stack_a);
+	sa(stack_a);
+	ra(&stack_a);
+	pb(&stack_b, &stack_a);
 	while (stack_a != NULL)
 	{
 		ft_printf("%d\n", stack_a->nb);
 		stack_a = stack_a->next;
+	}
+	while (stack_b != NULL)
+	{
+		ft_printf("\n%d\n", stack_b->nb);
+		stack_b = stack_b->next;
 	}
 	return (0);
 }
