@@ -16,9 +16,17 @@ typedef struct p_node
 void	insert_af(s_node **stack, int nb);
 
 //handle error
-
+int err_dup(s_node *stack_a, int value);
+int err_over_flow(char *av);
+int err_inval_char(char *av);
+void show_err(int x);
+void	check_input(s_node *stack_a, char *av);
 //stack initiation
-
+int ft_sorted(s_node *stack_a);
+int len_stack(s_node *stack_a);
+long	ft_atol(const char *nptr);
+float compute_disorder(s_node *stack_a);
+void disorder_metric(float dis_order);
 //nodes initiation
 
 //stack utils
