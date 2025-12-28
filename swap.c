@@ -6,7 +6,7 @@
 /*   By: rshikder <rshikder@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/25 20:36:01 by rshikder          #+#    #+#             */
-/*   Updated: 2025/12/25 20:36:45 by rshikder         ###   ########.fr       */
+/*   Updated: 2025/12/28 23:34:23 by rshikder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,26 +46,32 @@ void swap(s_node *head)
 	head->next->nb = tmp;
 }
 
-void sa(s_node *stack_a)
+void sa(s_node *stack_a, s_flags *flags)
 {
 	if (stack_a && stack_a->next)
 	{
 		swap(stack_a);
-		ft_printf("sa\n");
+		flags->total++;
+		flags->sa++;
+		if (!flags->bench)
+			ft_printf("sa\n");
 	}
 }
 
 
-void sb(s_node *stack_b)
+void sb(s_node *stack_b, s_flags *flags)
 {
 	if (stack_b && stack_b->next)
 	{
 		swap(stack_b);
-		ft_printf("sb\n");
+		flags->total++;
+		flags->sb++;
+		if (!flags->bench)
+			ft_printf("sb\n");
 	}
 }
 
-void ss(s_node *stack_a, s_node *stack_b)
+void ss(s_node *stack_a, s_node *stack_b, s_flags *flags)
 {
 		int i = 0;
 
@@ -80,5 +86,10 @@ void ss(s_node *stack_a, s_node *stack_b)
         i = 1;
     }
     if (i)
-        ft_printf("ss\n");
+	{
+       	flags->total++;
+		flags->ss++;
+		if (!flags->bench)
+			ft_printf("ss\n");
+	}
 }

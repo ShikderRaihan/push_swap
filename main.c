@@ -29,11 +29,14 @@ int main(int ac, char **av)
 {
 	s_node *stack_a;
 	s_node *stack_b;
+	s_flags flags;
 	int i;
 
 	i = 1;
 	stack_a = NULL;
 	stack_b = NULL;
+	ft_bzero(&flags, sizeof(s_flags));
+	flags.algo = -1;
 	if (ac < 2)
 		return (0);
 	if (ac == 2)
@@ -56,7 +59,8 @@ int main(int ac, char **av)
 	// pb(&stack_b, &stack_a);
 	while (stack_a != NULL)
 	{
-		ft_printf("%d\n", stack_a->nb);
+		stderr_printf("%d\n", stack_a->nb);
+		//ft_printf("%d\n", stack_a->nb);
 		stack_a = stack_a->next;
 	}
 	// while (stack_b != NULL)

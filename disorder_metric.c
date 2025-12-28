@@ -6,7 +6,7 @@
 /*   By: rshikder <rshikder@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 21:48:45 by rshikder          #+#    #+#             */
-/*   Updated: 2025/12/27 22:40:30 by rshikder         ###   ########.fr       */
+/*   Updated: 2025/12/28 20:48:45 by rshikder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,5 @@ void disorder_metric(float dis_order)
 	
 	i = (int)(dis_order * 100);
 	j = ((int)(dis_order * 10000) % 100);
-	ft_printf("%d.%d\n", i, j);
+	stderr_printf("Disorder: %d.%d%%\n", i, j);
 }

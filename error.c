@@ -6,7 +6,7 @@
 /*   By: rshikder <rshikder@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/25 21:13:04 by rshikder          #+#    #+#             */
-/*   Updated: 2025/12/27 21:04:29 by rshikder         ###   ########.fr       */
+/*   Updated: 2025/12/28 23:52:28 by rshikder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,31 +34,6 @@ int err_dup(s_node *stack_a, int value)
 // 	return (0);
 // }
 
-int ft_sorted(s_node *stack_a)
-{
-	if (stack_a == NULL || stack_a->next == NULL)
-		return (1);
-	while(stack_a)
-	{
-		if (stack_a->nb > stack_a->next->nb)
-				return (0);
-		stack_a = stack_a->next;
-	}
-	return (1);
-}
-
-int len_stack(s_node *stack_a)
-{
-	int i;
-
-	i = 0;
-	while(stack_a)
-	{
-		i++;
-		stack_a = stack_a->next;
-	}
-	return (i);
-}
 
 int err_over_flow(char *av)
 {

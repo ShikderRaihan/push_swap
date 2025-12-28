@@ -5,6 +5,7 @@
 #include <limits.h>
 #include "../Libft/libft.h"
 #include "../ft_printf/ft_printf.h"
+#include "stderr_printf/stderr_printf.h"
 
 typedef struct p_node
 {
@@ -12,6 +13,24 @@ typedef struct p_node
 	struct p_node *next;
 	struct p_node *prev;
 }s_node;
+
+typedef struct t_flags
+{
+	int total;
+	int bench;
+	int algo;
+	int sa;
+	int sb;
+	int ss;
+	int pa;
+	int pb;
+	int ra;
+	int rb;
+	int rr;
+	int rra;
+	int rrb;
+	int rrr;
+} s_flags;
 
 void	insert_af(s_node **stack, int nb);
 

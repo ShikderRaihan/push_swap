@@ -6,7 +6,7 @@
 /*   By: rshikder <rshikder@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/25 20:37:02 by rshikder          #+#    #+#             */
-/*   Updated: 2025/12/25 20:37:38 by rshikder         ###   ########.fr       */
+/*   Updated: 2025/12/28 23:36:21 by rshikder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,25 +31,31 @@ void rotate(s_node **head)
 	first->next = NULL;	
 }
 
-void ra(s_node **stack_a)
+void ra(s_node **stack_a, s_flags *flags)
 {
 	if (*stack_a && (*stack_a)->next)
 	{
 		rotate(stack_a);
-		ft_printf("ra\n");
+		s_flags->total++;
+		s_flags->ra++;
+		if(!flags->bench)
+			ft_printf("ra\n");
 	}
 }
 
-void rb(s_node **stack_b)
+void rb(s_node **stack_b, s_flags *flags)
 {
 	if (*stack_b && (*stack_b)->next)
 	{
 		rotate(stack_b);
-		ft_printf("rb\n");
+		s_flags->total++;
+		s_flags->rb++;
+		if(!flags->bench)
+			ft_printf("rb\n");
     }
 }
 
-void rr(s_node **stack_a, s_node **stack_b)
+void rr(s_node **stack_a, s_node **stack_b, s_flags *flags)
 {
 	int i = 0;
 
@@ -64,5 +70,10 @@ void rr(s_node **stack_a, s_node **stack_b)
         i = 1;
     }
     if (i)
-        ft_printf("rr\n");
+	{
+		s_flags->total++;
+		s_flags->rr++;
+		if(!flags->bench)
+			ft_printf("rr\n");
+	}
 }
