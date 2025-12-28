@@ -19,6 +19,7 @@ typedef struct t_flags
 	int total;
 	int bench;
 	int algo;
+	int algo_set;
 	int sa;
 	int sb;
 	int ss;
