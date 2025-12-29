@@ -6,13 +6,13 @@
 /*   By: rshikder <rshikder@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 21:48:45 by rshikder          #+#    #+#             */
-/*   Updated: 2025/12/28 20:48:45 by rshikder         ###   ########.fr       */
+/*   Updated: 2025/12/29 20:29:32 by rshikder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-float compute_disorder(s_node *stack_a)
+float compute_disorder(s_node *stack_a, s_flags *flags)
 {
 	int mistakes;
 	int total_pairs;
@@ -36,7 +36,7 @@ float compute_disorder(s_node *stack_a)
 	}
 	if (total_pairs == 0)
 		return (0.0);
-	return ((float)mistakes / (float)total_pairs);
+	return (flags->disorder = (float)mistakes / (float)total_pairs);
 }
 void disorder_metric(float dis_order)
 {

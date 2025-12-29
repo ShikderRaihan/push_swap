@@ -6,7 +6,7 @@
 /*   By: rshikder <rshikder@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/25 20:38:20 by rshikder          #+#    #+#             */
-/*   Updated: 2025/12/28 23:37:41 by rshikder         ###   ########.fr       */
+/*   Updated: 2025/12/29 18:09:14 by rshikder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ void rra(s_node **stack_a, s_flags *flags)
 	if (*stack_a && (*stack_a)->next)
 	{
 		reverse_rotate(stack_a);
-		s_flags->total++;
-		s_flags->rra++;
+		flags->total++;
+		flags->rra++;
 		if(!flags->bench)
 			ft_printf("rra\n");
 	}
@@ -48,8 +48,8 @@ void rrb(s_node **stack_b, s_flags *flags)
 	if (*stack_b && (*stack_b)->next)
 	{
 		reverse_rotate(stack_b);
-		s_flags->total++;
-		s_flags->rrb++;
+		flags->total++;
+		flags->rrb++;
 		if(!flags->bench)
 			ft_printf("rrb\n");
     }
@@ -71,8 +71,8 @@ void rrr(s_node **stack_a, s_node **stack_b, s_flags *flags)
     }
     if (i)
     {    
-		s_flags->total++;
-		s_flags->rrr++;
+		flags->total++;
+		flags->rrr++;
 		if(!flags->bench)
 			ft_printf("rrr\n");
 	}

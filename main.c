@@ -24,6 +24,14 @@ long	ft_atol(const char *nptr)
 	}
 	return (res * x);
 }
+// void free_list(s_node **stack_a)
+// {
+// 	while (*stack_a)
+// 	{
+// 		free (*stack_a);
+// 		*stack_a = (*stack_a)->next;
+// 	}
+// }
 
 int main(int ac, char **av)
 {
@@ -39,6 +47,7 @@ int main(int ac, char **av)
 	flags.algo = -1;
 	if (ac < 2)
 		return (0);
+	read_flags(&ac, &av, &flags);
 	if (ac == 2)
 	{
 		av = ft_split(av[1], ' ');
@@ -51,12 +60,16 @@ int main(int ac, char **av)
 		i++;
 	}
 	//if(!ft_sorted(stack_a))
-	disorder_metric(compute_disorder(stack_a));
+	disorder_metric(compute_disorder(stack_a, &flags));
 	// if ft_sorted(stack_a)
 	// 	free(stack_a);
 	// sa(stack_a);
 	// ra(&stack_a);
 	// pb(&stack_b, &stack_a);
+	ft_printf("%d\n", flags.bench);
+	ft_printf("%d\n", flags.algo);
+	ft_sorted(stack_a);
+	//simple_sort(stack_a, &flags);
 	while (stack_a != NULL)
 	{
 		stderr_printf("%d\n", stack_a->nb);

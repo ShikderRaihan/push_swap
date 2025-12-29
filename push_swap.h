@@ -20,6 +20,7 @@ typedef struct t_flags
 	int bench;
 	int algo;
 	int algo_set;
+	float disorder;
 	int sa;
 	int sb;
 	int ss;
@@ -45,28 +46,36 @@ void	check_input(s_node *stack_a, char *av);
 int ft_sorted(s_node *stack_a);
 int len_stack(s_node *stack_a);
 long	ft_atol(const char *nptr);
-float compute_disorder(s_node *stack_a);
+float compute_disorder(s_node *stack_a, s_flags *flags);
 void disorder_metric(float dis_order);
 //nodes initiation
 
 //stack utils
-
+//simple
+int *stack_to_intarr(s_node *stack_a);
+void simple_sort(s_node *stack_a, s_flags *flags);
+//flags
+void read_flags(int *ac, char ***av, s_flags *flags);
+int check_flag(char *av, s_flags *flags);
+void rem_flags(int *ac, char ***av, int index);
+int     ft_strcmp(char *s1, char *s2);
+void print_bench(s_flags *flags);
 //commands
 void swap(s_node *head);
-void sa(s_node *stack_a);
-void sb(s_node *stack_b);
-void ss(s_node *stack_a, s_node *stack_b);
+void sa(s_node *stack_a, s_flags *flags);
+void sb(s_node *stack_b, s_flags *flags);
+void ss(s_node *stack_a, s_node *stack_b, s_flags *flags);
 void push(s_node **stack_a, s_node **stack_b);
-void pa(s_node **stack_a, s_node **stack_b);
-void pb(s_node **stack_b, s_node **stack_a);
+void pa(s_node **stack_a, s_node **stack_b, s_flags *flags);
+void pb(s_node **stack_b, s_node **stack_a, s_flags *flags);
 void rotate(s_node **head);
-void ra(s_node **stack_a);
-void rb(s_node **stack_b);
-void rr(s_node **stack_a, s_node **stack_b);
+void ra(s_node **stack_a, s_flags *flags);
+void rb(s_node **stack_b, s_flags *flags);
+void rr(s_node **stack_a, s_node **stack_b, s_flags *flags);
 void reverse_rotate(s_node **head);
-void rra(s_node **stack_a);
-void rrb(s_node **stack_b);
-void rrr(s_node **stack_a, s_node **stack_b);
+void rra(s_node **stack_a, s_flags *flags);
+void rrb(s_node **stack_b, s_flags *flags);
+void rrr(s_node **stack_a, s_node **stack_b, s_flags *flags);
 //algorithms
 
 #endif

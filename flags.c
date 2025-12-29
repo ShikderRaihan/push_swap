@@ -6,7 +6,7 @@
 /*   By: rshikder <rshikder@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/28 19:07:16 by rshikder          #+#    #+#             */
-/*   Updated: 2025/12/29 00:50:13 by rshikder         ###   ########.fr       */
+/*   Updated: 2025/12/29 18:44:45 by rshikder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void read_flags(int *ac, char ***av, s_flags *flags)
 	i = 1;
     while (i < *ac)
     {
-        if (ft_strncmp((*av)[i], "--bench", 7) == 0)
+        if (ft_strcmp((*av)[i], "--bench") == 0)
         {
 			flags->bench = 1;
 			rem_flags(ac, av, i);
@@ -31,22 +31,22 @@ void read_flags(int *ac, char ***av, s_flags *flags)
     }
 }
 
-static int check_flag(char *av, s_flags *flags)
+int check_flag(char *av, s_flags *flags)
 {
-    if (ft_strncmp(av, "--simple", 8) == 0)
+    if (ft_strcmp(av, "--simple") == 0)
         flags->algo = 0;
-    else if (ft_strncmp(av, "--medium", 8) == 0)
+    else if (ft_strcmp(av, "--medium") == 0)
         flags->algo = 1;
-    else if (ft_strncmp(av, "--complex", 9) == 0)
+    else if (ft_strcmp(av, "--complex") == 0)
         flags->algo = 2;
-    else if (ft_strncmp(av, "--adaptive", 10) == 0)
+    else if (ft_strcmp(av, "--adaptive") == 0)
         flags->algo = -1;
     else
-        return (0); 
-	if (flags->algo_set)
-		show_err(0);
-	flags->algo_set = 1;
-	return (1);
+        return (0);
+    if (flags->algo_set)
+        show_err(0);
+    flags->algo_set = 1;
+    return (1);
 }
 
 void rem_flags(int *ac, char ***av, int index)
@@ -61,4 +61,15 @@ void rem_flags(int *ac, char ***av, int index)
 	}
 	(*av)[*ac - 1] = NULL;
 	(*ac)--;
+}
+int     ft_strcmp(char *s1, char *s2)
+{
+        int     i;
+
+        i = 0;
+        while (s1[i] == s2[i] && s1[i] != '\0')
+        {
+                i++;
+        }
+        return (s1[i] - s2[i]);
 }

@@ -6,7 +6,7 @@
 /*   By: rshikder <rshikder@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/25 21:13:04 by rshikder          #+#    #+#             */
-/*   Updated: 2025/12/28 23:52:28 by rshikder         ###   ########.fr       */
+/*   Updated: 2025/12/29 17:59:32 by rshikder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,13 +76,4 @@ void show_err(int x)
 		exit (1);
 	}
 }
-void	check_input(s_node *stack_a, char *av)
-{
-	int val;
 
-	show_err(err_inval_char(av));
-	show_err(err_over_flow(av));
-
-	val = ft_atol(av);
-	show_err(err_dup(stack_a, val));
-}

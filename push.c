@@ -6,7 +6,7 @@
 /*   By: rshikder <rshikder@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/25 20:34:50 by rshikder          #+#    #+#             */
-/*   Updated: 2025/12/28 23:38:19 by rshikder         ###   ########.fr       */
+/*   Updated: 2025/12/29 18:08:48 by rshikder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ void pa(s_node **stack_a, s_node **stack_b, s_flags *flags)
 	if (*stack_b)
 	{
 		push(stack_a, stack_b);
-		s_flags->total++;
-		s_flags->pa++;
+		flags->total++;
+		flags->pa++;
 		if(!flags->bench)
 			ft_printf("pa\n");
 	}
@@ -45,8 +45,8 @@ void pb(s_node **stack_b, s_node **stack_a, s_flags *flags)
 	if (*stack_a)
 	{
 		push(stack_b, stack_a);
-		s_flags->total++;
-		s_flags->pb++;
+		flags->total++;
+		flags->pb++;
 		if(!flags->bench)
 			ft_printf("pb\n");
 	}
