@@ -6,18 +6,18 @@
 /*   By: rshikder <rshikder@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/28 23:49:28 by rshikder          #+#    #+#             */
-/*   Updated: 2025/12/29 20:31:45 by rshikder         ###   ########.fr       */
+/*   Updated: 2025/12/30 23:25:45 by rshikder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void print_bench(s_flags *flags)
+void print_bench(s_flags *flags, float disorder)
 {
 	if(flags->bench)
 	{
 		stderr_printf("=== BENCH ===\n");
-		disorder_metric(flags->disorder);
+		disorder_metric(disorder);
 		stderr_printf("Total ops: %d\n\n", flags->total);
 		//strategy
 		stderr_printf("sa: %d\n", flags->sa);

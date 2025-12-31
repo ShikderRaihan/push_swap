@@ -7,11 +7,11 @@
 #include "../ft_printf/ft_printf.h"
 #include "stderr_printf/stderr_printf.h"
 
-typedef struct p_node
+typedef struct t_node
 {
 	int	nb;
-	struct p_node *next;
-	struct p_node *prev;
+	struct t_node *next;
+	struct t_node *prev;
 }s_node;
 
 typedef struct t_flags
@@ -49,8 +49,17 @@ long	ft_atol(const char *nptr);
 float compute_disorder(s_node *stack_a, s_flags *flags);
 void disorder_metric(float dis_order);
 //nodes initiation
-
+//complex_sort
+void stack_index(s_node *stack_a);
+int bits_max(s_node *stack_a);
+void bit_process(s_node **stack_a, s_node **stack_b,s_flags *flags, int bits);
+void complex_sort(s_node **stack_a, s_node **stack_b, s_flags *flags);
 //stack utils
+void stack_index(s_node *stack_a);
+int bits_max(s_node *stack_a);
+void bit_process(s_node **stack_a, s_node **stack_b,s_flags *flags, int bits);
+void complex_sort(s_node **stack_a, s_node **stack_b, s_flags *flags);
+void free_stack(s_node *stack_a);
 //simple
 int *stack_to_intarr(s_node *stack_a);
 void simple_sort(s_node *stack_a, s_flags *flags);
@@ -58,8 +67,8 @@ void simple_sort(s_node *stack_a, s_flags *flags);
 void read_flags(int *ac, char ***av, s_flags *flags);
 int check_flag(char *av, s_flags *flags);
 void rem_flags(int *ac, char ***av, int index);
-int     ft_strcmp(char *s1, char *s2);
-void print_bench(s_flags *flags);
+int	ft_strcmp(char *s1, char *s2);
+void print_bench(s_flags *flags, float disorder);
 //commands
 void swap(s_node *head);
 void sa(s_node *stack_a, s_flags *flags);

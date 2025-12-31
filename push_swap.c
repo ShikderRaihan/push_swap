@@ -6,7 +6,7 @@
 /*   By: rshikder <rshikder@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 20:40:27 by rshikder          #+#    #+#             */
-/*   Updated: 2025/12/24 20:07:55 by rshikder         ###   ########.fr       */
+/*   Updated: 2025/12/31 00:53:40 by rshikder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,3 +35,14 @@ void	insert_af(s_node **head, int nb)
 	new_node->prev = current;
 }
 
+void free_stack(s_node *stack_a)
+{
+	s_node *tmp;
+	
+	while(stack_a)
+	{
+		tmp = stack_a->next;
+		free (stack_a);
+		stack_a = tmp;
+	}
+}

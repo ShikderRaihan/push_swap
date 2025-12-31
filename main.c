@@ -59,28 +59,33 @@ int main(int ac, char **av)
 		insert_af(&stack_a, ft_atol(av[i]));
 		i++;
 	}
-	//if(!ft_sorted(stack_a))
-	disorder_metric(compute_disorder(stack_a, &flags));
+	flags.disorder = compute_disorder(stack_a, &flags);
+	if (flags.bench)
+		disorder_metric(flags.disorder);
 	// if ft_sorted(stack_a)
 	// 	free(stack_a);
 	// sa(stack_a);
 	// ra(&stack_a);
 	// pb(&stack_b, &stack_a);
-	ft_printf("%d\n", flags.bench);
-	ft_printf("%d\n", flags.algo);
-	ft_sorted(stack_a);
-	//simple_sort(stack_a, &flags);
-	while (stack_a != NULL)
-	{
-		stderr_printf("%d\n", stack_a->nb);
-		//ft_printf("%d\n", stack_a->nb);
-		stack_a = stack_a->next;
-	}
+	int j = len_stack(stack_a);
+	if (j <= 10)
+		simple_sort(stack_a, &flags);
+	else 
+		complex_sort(&stack_a, &stack_b, &flags);
+	// while (stack_a != NULL)
+	// {
+	// 	ft_printf("%d\n", stack_a->nb);
+	// 	stack_a = stack_a->next;
+	// }
 	// while (stack_b != NULL)
 	// {
 	// 	ft_printf("\n%d\n", stack_b->nb);
 	// 	stack_b = stack_b->next;
 	// }
+	free_stack(stack_a);
+	free_stack(stack_b);
+	stack_a = NULL;
+	stack_b = NULL;
 	return (0);
 }
 
