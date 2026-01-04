@@ -67,11 +67,11 @@ int main(int ac, char **av)
 	// sa(stack_a);
 	// ra(&stack_a);
 	// pb(&stack_b, &stack_a);
-	int j = len_stack(stack_a);
-	if (j <= 10)
-		simple_sort(stack_a, &flags);
-	else 
-		complex_sort(&stack_a, &stack_b, &flags);
+	//int j = len_stack(stack_a);
+	// if (j <= 10)
+	// 	simple_sort(stack_a, &flags);
+	// else 
+	chunk_sort(&stack_a, &stack_b, &flags);
 	// while (stack_a != NULL)
 	// {
 	// 	ft_printf("%d\n", stack_a->nb);

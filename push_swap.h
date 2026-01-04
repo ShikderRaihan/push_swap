@@ -49,6 +49,15 @@ long	ft_atol(const char *nptr);
 float compute_disorder(s_node *stack_a, s_flags *flags);
 void disorder_metric(float dis_order);
 //nodes initiation
+//medium_sort
+int in_chunk (int val, int min, int max);
+int	find_max(s_node *stack_a);
+int distance_to_top(s_node *stack_a, int val);
+int distance_to_bottom(s_node *stack, int val);
+s_node *find_next_in_chunk(s_node *stack, int min, int max);
+void	push_chunk(s_node **stack_a, s_node **stack_b, int min, int max, s_flags *flags);
+void	push_back_max(s_node **stack_a, s_node **stack_b, s_flags *flags);
+void	chunk_sort(s_node **stack_a, s_node **stack_b, s_flags *flags);
 //complex_sort
 void stack_index(s_node *stack_a);
 int bits_max(s_node *stack_a);
