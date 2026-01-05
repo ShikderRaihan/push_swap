@@ -6,13 +6,13 @@
 /*   By: rshikder <rshikder@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 18:57:53 by rshikder          #+#    #+#             */
-/*   Updated: 2026/01/03 20:48:08 by rshikder         ###   ########.fr       */
+/*   Updated: 2026/01/05 21:56:21 by rshikder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// void keep_original(s_node *stack_a)
+// void stack_index(s_node *stack_a)
 // {
 // 	s_node *i;
 // 	int		index;
@@ -20,7 +20,14 @@
 // 	int		count;
 	
 // 	// Count nodes
-// 	count = len_stack(stack_a);
+// 	count = 0;
+// 	i = stack_a;
+// 	while (i)
+// 	{
+// 		count++;
+// 		i = i->next;
+// 	}
+	
 // 	// Save original values
 // 	original_values = malloc(sizeof(int) * count);
 // 	i = stack_a;
@@ -31,9 +38,7 @@
 // 		count++;
 // 		i = i->next;
 // 	}
-// }
-// void stack_index(*stack_a)
-// {
+	
 // 	// Assign indices based on original values
 // 	i = stack_a;
 // 	count = 0;
@@ -63,27 +68,28 @@
 // 	free(original_values);
 // }
 
-void	stack_index(s_node *stack_a)
-{
-	s_node	*i;
-	s_node	*j;
-	int		index;
 
-	i = stack_a;
-	while (i)
-	{
-		index = 0;
-		j = stack_a;
-		while (j)
-		{
-			if (j->nb < i->nb)
-				index++;
-			j = j->next;
-		}
-		i->nb = index;
-		i = i->next;
-	}
-}
+// void	stack_index(s_node *stack)
+// {
+// 	s_node	*i;
+// 	s_node	*j;
+// 	int		index;
+
+// 	i = stack;
+// 	while (i)
+// 	{
+// 		index = 0;
+// 		j = stack;
+// 		while (j)
+// 		{
+// 			if (j->nb < i->nb)
+// 				index++;
+// 			j = j->next;
+// 		}
+// 		i->index = index;
+// 		i = i->next;
+// 	}
+// }
 
 
 

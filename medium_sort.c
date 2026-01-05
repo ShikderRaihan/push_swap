@@ -6,7 +6,7 @@
 /*   By: rshikder <rshikder@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 20:57:53 by rshikder          #+#    #+#             */
-/*   Updated: 2026/01/04 01:41:43 by rshikder         ###   ########.fr       */
+/*   Updated: 2026/01/05 22:58:49 by rshikder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -215,17 +215,10 @@ void push_back_max(s_node **stack_a, s_node **stack_b, s_flags *flags)
         dist_bottom = len_stack(*stack_b) - dist_top;
         while ((*stack_b)->nb != max)
         {
-            if (dist_top <= dist_bottom && (*stack_a))
-            	rr(stack_a, stack_b, flags);
-            else if (dist_top > dist_bottom && (*stack_a))
-            	rrr(stack_a, stack_b, flags);
+            if (dist_top <= dist_bottom)
+                rb(stack_b, flags);
             else
-            {
-                if (dist_top <= dist_bottom)
-                    rb(stack_b, flags);
-                else
-                    rrb(stack_b, flags);
-            }
+                rrb(stack_b, flags);
         }
         pa(stack_a, stack_b, flags);
     }
