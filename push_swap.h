@@ -10,6 +10,11 @@
 typedef struct t_node
 {
 	int	nb;
+	int index;
+	int cost;
+	int plus_med;
+	int closest;
+	struct t_node *target_node;
 	struct t_node *next;
 	struct t_node *prev;
 }s_node;
@@ -37,6 +42,27 @@ typedef struct t_flags
 void	insert_af(s_node **stack, int nb);
 void	free_stack(s_node **stack);
 
+
+//turk
+void rev_rot_rrr(s_node **stack_a, s_node **stack_b, s_node *minst_val, s_flags *flags);
+void rotate_rr(s_node **stack_a, s_node **stack_b, s_node *minst_node, s_flags *flags);
+void sort_three(s_node **stack_a, s_flags *flags);
+void turk_sort(s_node **stack_a, s_node **stack_b, s_flags *flags);
+void update_index(s_node *stack);
+s_node	*find_max_node(s_node *stack);
+void fill_nodes_a(s_node *stack_a, s_node *stack_b);
+void aim_node_a(s_node *stack_a, s_node *stack_b);
+void calc_cost(s_node *stack_a, s_node *stack_b);
+void closest_set(s_node *stack);
+void fill_nodes_b(s_node *stack_a, s_node *stack_b);
+void aim_node_b(s_node *stack_a, s_node *stack_b);
+void calc_cost_b(s_node *stack_a, s_node *stack_b);
+void final_sort(s_node **stack_a, s_flags *flags);
+void transfer_to_b(s_node **stack_a, s_node **stack_b, s_flags *flags);
+void transfer_to_a(s_node **stack_a, s_node **stack_b, s_flags *flags);
+s_node *find_closest(s_node *stack);
+void pre_push(s_node **stack, s_node *node_top,s_flags *flags, char stack_name);
+s_node	*find_minimum(s_node *stack);
 //handle error
 int err_dup(s_node *stack_a, int value);
 int err_over_flow(char *av);
@@ -51,14 +77,19 @@ float compute_disorder(s_node *stack_a, s_flags *flags);
 void disorder_metric(float dis_order);
 //nodes initiation
 //hybrid
-int	is_in_range(int val, int min, int max);
-int	get_hybrid_chunk_size(int size);
-void	hybrid_push_range (s_node **a,s_node **b, int min, int max, s_flags *flags);
-void	hybrid_push_all_ranges(s_node **a, s_node **b, s_flags *flags);
-int	find_max_index(s_node *b);
-int	get_distance_to_top(s_node *s, int val);
-void	hybrid_push_back(s_node **a, s_node **b, s_flags *flags);
-void	hybrid_chunk_sort(s_node **a, s_node **b, s_flags *flags);
+int	range_exists(s_node *a, int min, int max);
+int	move_cost(s_node *a, int val);
+int	find_cheapest_in_range(s_node *a, int min, int max);
+void	rotate_a_to_top(s_node **a, int val, s_flags *f);
+void	push_chunk_smart(s_node **a, s_node **b, int min, int max, s_flags *f);
+void	rotate_b_to_top(s_node **b, int val, s_flags *f);
+void	push_back_to_a(s_node **a, s_node **b, s_flags *f);
+void	sort_big(s_node **a, s_node **b, s_flags *flags);
+int	find_b_target(s_node *b, int val);
+int	move_cost_b(s_node *b, int val);
+void	rotate_both(s_node **a, s_node **b, int va, int vb, s_flags *f);
+int is_sorted_in_place(s_node *a, int min, int max);
+int already_at_bottom(s_node *a, int min, int max);
 //index 
 void	fill_values_array(s_node *stack, int *arr);
 int	compute_index(int *arr, int total, int value);

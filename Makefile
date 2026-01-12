@@ -1,7 +1,7 @@
  .SILENT:
 
 NAME = push_swap
-SRCS = main.c push_swap.c push.c swap.c rotate.c reverse_rotate.c error.c disorder_metric.c flags.c bench.c check_input.c simple_sort.c complex_sort.c medium_sort.c stack_index.c hybrid.c
+SRCS = main.c push_swap.c push.c swap.c rotate.c reverse_rotate.c error.c disorder_metric.c flags.c bench.c check_input.c complex_sort.c medium_sort.c stack_index.c hybrid.c turk_algo.c sortthree.c turk_util.c ultra.c 
 OBJS = ${SRCS:.c=.o}
 CC = cc
 CFLAGS = -Wall -Wextra -Werror

@@ -60,7 +60,8 @@ int main(int ac, char **av)
 		i++;
 	}
 	flags.disorder = compute_disorder(stack_a, &flags);
-	hybrid_chunk_sort(&stack_a, &stack_b, &flags);
+	chunk_sort(&stack_a, &stack_b, &flags);
+	//turk_sort(&stack_a, &stack_b, &flags);
 	free_stack(&stack_a);
 	free_stack(&stack_b);
 	return (0);

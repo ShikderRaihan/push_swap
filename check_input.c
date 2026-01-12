@@ -6,7 +6,7 @@
 /*   By: rshikder <rshikder@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/28 23:52:10 by rshikder          #+#    #+#             */
-/*   Updated: 2025/12/29 17:59:55 by rshikder         ###   ########.fr       */
+/*   Updated: 2026/01/12 01:58:45 by rshikder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ void	check_input(s_node *stack_a, char *av)
 }
 int ft_sorted(s_node *stack_a)
 {
-	if (stack_a == NULL || stack_a->next == NULL)
+	if (!stack_a)
 		return (1);
-	while(stack_a)
+	while(stack_a && stack_a->next)
 	{
 		if (stack_a->nb > stack_a->next->nb)
 				return (0);

@@ -6,7 +6,7 @@
 /*   By: rshikder <rshikder@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 20:57:53 by rshikder          #+#    #+#             */
-/*   Updated: 2026/01/05 22:58:49 by rshikder         ###   ########.fr       */
+/*   Updated: 2026/01/10 22:34:08 by rshikder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,24 +53,6 @@ int distance_to_bottom(s_node *stack, int val)
     return len - top_dist;
 }
 
-// int	distance_to_bottom(s_node *stack, int val)
-// {
-// 	int	len;
-// 	int	dist;
-
-// 	len = len_stack(stack);
-// 	dist = 0;
-// 	while (stack)
-// 	{
-// 		if (stack->nb == val)
-// 			return (len - dist);
-// 		dist++;
-// 		stack = stack->next;
-// 	}
-// 	return (0);
-// }
-
-
 s_node *find_next_in_chunk(s_node *stack, int min, int max)
 {
     while (stack)
@@ -81,98 +63,6 @@ s_node *find_next_in_chunk(s_node *stack, int min, int max)
     }
     return (NULL);
 }
-
-// s_node *find_closest_in_chunk(s_node *stack, int min, int max)
-// {
-//     s_node *target = NULL;
-//     s_node *current = stack;
-//     int dist_top = 0;
-//     int best_dist = len_stack(stack) + 1; // big number
-
-//     while (current)
-//     {
-//         if (current->nb >= min && current->nb <= max)
-//         {
-//             int dist_bottom = len_stack(stack) - dist_top;
-//             if (dist_top <= dist_bottom && dist_top < best_dist)
-//             {
-//                 best_dist = dist_top;
-//                 target = current;
-//             }
-//             else if (dist_bottom < best_dist)
-//             {
-//                 best_dist = dist_bottom;
-//                 target = current;
-//             }
-//         }
-//         dist_top++;
-//         current = current->next;
-//     }
-//     return target;
-// }
-
-// s_node	*find_closest_in_chunk(s_node *stack, int min, int max)
-// {
-// 	s_node	*top;
-// 	s_node	*bottom;
-// 	int	top_dist;
-// 	int	bottom_dist;
-
-// 	top = stack;
-// 	top_dist = 0;
-// 	while (top)
-// 	{
-// 		if (in_chunk(top->nb, min, max))
-// 			break ;
-// 		top_dist++;
-// 		top = top->next;
-// 	}
-// 	if (!top)
-// 		return (NULL);
-
-// 	bottom = stack;
-// 	bottom_dist = 0;
-// 	while (bottom->next)
-// 		bottom = bottom->next;
-// 	while (bottom)
-// 	{
-// 		if (in_chunk(bottom->nb, min, max))
-// 			break ;
-// 		bottom_dist++;
-// 		bottom = bottom->prev;
-// 	}
-// 	if (bottom_dist < top_dist)
-// 		return (bottom);
-// 	else
-// 		return (top);
-// }
-
-// void push_chunk(s_node **stack_a, s_node **stack_b, int min, int max, s_flags *flags)
-// {
-//     int size = len_stack(*stack_a);
-//     s_node *target;
-//     int dist_top;
-//     int dist_bottom;
-
-//     while (size-- > 0)
-//     {
-//         target = find_closest_in_chunk(*stack_a, min, max);
-//         if (!target)
-//             break;
-//         dist_top = distance_to_top(*stack_a, target->nb);
-//         dist_bottom = len_stack(*stack_a) - dist_top;
-//         while ((*stack_a)->nb != target->nb)
-//         {
-//             if (dist_top <= dist_bottom)
-//                 ra(stack_a, flags);
-//             else
-//                 rra(stack_a, flags);
-//         }
-//         pb(stack_b, stack_a, flags);
-// 		if ((*stack_b)->next && (*stack_b)->nb < (*stack_b)->next->nb)
-// 			sb(stack_b, flags);
-//     }
-// }
 
 void	push_chunk(s_node **stack_a, s_node **stack_b, int min, int max, s_flags *flags)
 {
@@ -223,7 +113,6 @@ void push_back_max(s_node **stack_a, s_node **stack_b, s_flags *flags)
         pa(stack_a, stack_b, flags);
     }
 }
-//find min and try without index
 
 void	chunk_sort(s_node **stack_a, s_node **stack_b, s_flags *flags)
 {
@@ -236,9 +125,9 @@ void	chunk_sort(s_node **stack_a, s_node **stack_b, s_flags *flags)
 	size = len_stack(*stack_a);
 	stack_index(*stack_a);
 	if (size <= 100)
-    	chunk = 15;
+    	chunk = 20;
 	else
-    	chunk = 30;
+    	chunk = 45;
 
 	min = 0;
 	while (min < size)
