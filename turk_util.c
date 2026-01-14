@@ -6,12 +6,11 @@
 /*   By: rshikder <rshikder@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 23:57:11 by rshikder          #+#    #+#             */
-/*   Updated: 2026/01/12 02:14:20 by rshikder         ###   ########.fr       */
+/*   Updated: 2026/01/14 15:07:27 by rshikder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 void fill_nodes_b(s_node *stack_a, s_node *stack_b)
 {
@@ -34,9 +33,9 @@ void aim_node_b(s_node *stack_a, s_node *stack_b)
 		cur_a = stack_a;
 		while (cur_a)
 		{
-			if(cur_a->nb > stack_b->nb && cur_a->nb < best_index)
+			if(cur_a->nb > stack_b->nb && (cur_a->nb - stack_b->nb) < best_index)
 			{
-				best_index = cur_a->nb;
+				best_index = cur_a->nb - stack_b->nb;
 				tar_node = cur_a;
 			}
 			cur_a = cur_a->next;
@@ -46,17 +45,6 @@ void aim_node_b(s_node *stack_a, s_node *stack_b)
 		else
 			stack_b->target_node = tar_node;
 		stack_b = stack_b->next;
-	}
-}
-
-void min_top(s_node **stack_a, s_flags *flags)
-{
-	while((*stack_a)->nb != find_minimum(*stack_a)->nb)
-	{
-		if (find_minimum(*stack_a)->plus_med)
-			ra(stack_a, flags);
-		else
-			rra(stack_a, flags);
 	}
 }
 
@@ -76,29 +64,6 @@ s_node	*find_minimum(s_node *stack)
 		curr = curr->next;
 	}
 	return (min);
-}
-
-void calc_cost_b(s_node *stack_a, s_node *stack_b)
-{
-	int a_len;
-	int b_len;
-
-	a_len = len_stack(stack_a);
-	b_len = len_stack(stack_b);
-	while(stack_b)
-	{
-		stack_b->cost = stack_b->index;
-		if (!stack_b->plus_med)
-			stack_b->cost = b_len - (stack_b->index);
-		if (stack_b->target_node)
-		{
-			if (stack_b->target_node->plus_med)
-				stack_b->cost += stack_b->target_node->index;
-			else
-				stack_b->cost += a_len - (stack_b->target_node->index);
-		}
-		stack_b = stack_b->next;
-	}
 }
 
 void final_sort(s_node **stack_a, s_flags *flags)

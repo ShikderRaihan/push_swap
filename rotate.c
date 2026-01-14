@@ -6,7 +6,7 @@
 /*   By: rshikder <rshikder@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/25 20:37:02 by rshikder          #+#    #+#             */
-/*   Updated: 2026/01/12 01:58:45 by rshikder         ###   ########.fr       */
+/*   Updated: 2026/01/14 11:01:56 by rshikder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,3 +85,4 @@ void rotate_rr(s_node **stack_a, s_node **stack_b, s_node *minst_node, s_flags *
 	update_index(*stack_a);
 	update_index(*stack_b);
 }
+

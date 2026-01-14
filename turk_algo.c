@@ -6,7 +6,7 @@
 /*   By: rshikder <rshikder@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 18:58:07 by rshikder          #+#    #+#             */
-/*   Updated: 2026/01/12 01:58:45 by rshikder         ###   ########.fr       */
+/*   Updated: 2026/01/14 15:06:59 by rshikder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ s_node	*find_max_node(s_node *stack)
 void turk_sort(s_node **stack_a, s_node **stack_b, s_flags *flags)
 {
 	int len;
-
+	
 	len = len_stack(*stack_a);
 	if (len <= 1 || ft_sorted(*stack_a))
 		return ;
@@ -75,7 +75,7 @@ void update_index(s_node *stack)
 	x = 0;
 	if (!stack)
 		return ;
-	med = len_stack(stack) / 2;
+	med = (len_stack(stack) + 1) / 2;
 	while(stack)
 	{
 		stack->index = x;
@@ -100,53 +100,31 @@ void aim_node_a(s_node *stack_a, s_node *stack_b)
 {
 	s_node *cur_b;
 	s_node *tar_node;
-	long best_index;
+	long best_val;
 	
 	if (!stack_b)
 		return ;
 	while(stack_a)
 	{
-		best_index = LONG_MIN;
+		best_val = LONG_MIN;
 		tar_node = NULL;
 		cur_b = stack_b;
 		while (cur_b)
 		{
-			if(cur_b->nb < stack_a->nb && cur_b->nb > best_index)
+			if(cur_b->nb < stack_a->nb && (cur_b->nb - stack_a->nb) > best_val)
 			{
-				best_index = cur_b->nb;
+				best_val = (cur_b->nb - stack_a->nb);
 				tar_node = cur_b;
 			}
 			cur_b = cur_b->next;
 		}	
-		if (best_index == LONG_MIN)
+		if (best_val == LONG_MIN)
 		{
 			tar_node = find_max_node(stack_b);
 			stack_a->target_node = tar_node;
 		}
 		else
 			stack_a->target_node = tar_node;
-		stack_a = stack_a->next;
-	}
-}
-void calc_cost(s_node *stack_a, s_node *stack_b)
-{
-	int a_len;
-	int b_len;
-
-	a_len = len_stack(stack_a);
-	b_len = len_stack(stack_b);
-	while(stack_a)
-	{
-		stack_a->cost = stack_a->index;
-		if (!stack_a->plus_med)
-			stack_a->cost = a_len - (stack_a->index);
-		if (stack_a->target_node && b_len > 0)
-		{
-			if (stack_a->target_node->plus_med)
-				stack_a->cost += stack_a->target_node->index;
-			else
-				stack_a->cost += b_len - (stack_a->target_node->index);
-		}
 		stack_a = stack_a->next;
 	}
 }

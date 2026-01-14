@@ -6,7 +6,7 @@
 /*   By: rshikder <rshikder@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 22:01:36 by rshikder          #+#    #+#             */
-/*   Updated: 2026/01/12 01:58:39 by rshikder         ###   ########.fr       */
+/*   Updated: 2026/01/14 12:37:05 by rshikder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,15 @@ void transfer_to_b(s_node **stack_a, s_node **stack_b, s_flags *flags)
 	if (!minst_node || !minst_node->target_node)
 		return ;
 	if (minst_node->plus_med && minst_node->target_node->plus_med)
-		rotate_rr(stack_a, stack_b, minst_node, flags);
+		{
+			while(minst_node->index && minst_node->target_node->index)
+				rotate_rr(stack_a, stack_b, minst_node, flags);
+		}
 	else if (!(minst_node->plus_med) && !(minst_node->target_node->plus_med))
-		rev_rot_rrr(stack_a, stack_b, minst_node, flags);
+		{
+			while(minst_node->index && minst_node->target_node->index)
+				rev_rot_rrr(stack_a, stack_b, minst_node, flags);
+		}
 	pre_push(stack_a, minst_node, flags, 'a');
 	pre_push(stack_b, minst_node->target_node, flags, 'b');
 	pb(stack_b, stack_a, flags);
