@@ -6,18 +6,18 @@
 /*   By: rshikder <rshikder@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 20:40:27 by rshikder          #+#    #+#             */
-/*   Updated: 2026/01/05 22:58:49 by rshikder         ###   ########.fr       */
+/*   Updated: 2026/01/17 19:03:29 by rshikder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	insert_af(s_node **head, int nb)
+void	insert_af(t_node **head, int nb)
 {
-	s_node	*new_node;
-	s_node	*current;
+	t_node	*new_node;
+	t_node	*current;
 
-	new_node = malloc(sizeof(s_node));
+	new_node = malloc(sizeof(t_node));
 	if (!new_node)
 		return ;
 	new_node->nb = nb;
@@ -35,15 +35,31 @@ void	insert_af(s_node **head, int nb)
 	new_node->prev = current;
 }
 
-void	free_stack(s_node **stack)
+void	free_stack(t_node **stack_a, t_node **stack_b)
 {
-	s_node	*temp;
+	t_node	*temp;
 
-	while (*stack)
+	while (*stack_a)
 	{
-		temp = *stack;
-		*stack = (*stack)->next;
+		temp = *stack_a;
+		*stack_a = (*stack_a)->next;
 		free(temp);
 	}
-	*stack = NULL;
+	*stack_a = NULL;
+	if (stack_b)
+	{
+		while (*stack_b)
+		{
+			temp = *stack_b;
+			*stack_b = (*stack_b)->next;
+			free(temp);
+		}
+		*stack_b = NULL;
+	}
 }
+// void choose_adaptive(t_flags *flags)
+// {
+// 	float disorder;
+
+// 	disorder = compute_disorder(flags);
+// }

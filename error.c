@@ -6,15 +6,15 @@
 /*   By: rshikder <rshikder@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/25 21:13:04 by rshikder          #+#    #+#             */
-/*   Updated: 2025/12/29 17:59:32 by rshikder         ###   ########.fr       */
+/*   Updated: 2026/01/17 18:25:40 by rshikder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int err_dup(s_node *stack_a, int value)
+int	err_dup(t_node *stack_a, int value)
 {
-	while(stack_a)
+	while (stack_a)
 	{
 		if (stack_a->nb == value)
 			return (0);
@@ -34,46 +34,42 @@ int err_dup(s_node *stack_a, int value)
 // 	return (0);
 // }
 
-
-int err_over_flow(char *av)
+int	err_over_flow(char *av)
 {
-	long val;
-	
+	long	val;
+
 	val = ft_atol(av);
-	if(val > INT_MAX || val < INT_MIN)
-		{
-			// write(2,"Error\n", 6);
-			// exit (1);
-			return (0);
-		}
+	if (val > INT_MAX || val < INT_MIN)
+		return (0);
 	return (1);
 }
 
-int err_inval_char(char *av)
+int	err_inval_char(char *av)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	if(av[i] == '+' || av[i] == '-')
+	if (av[i] == '+' || av[i] == '-')
 		i++;
-	if(av[i] == '\0')
+	if (av[i] == '\0')
 		return (0);
-	
-	while(av[i])
+	while (av[i])
 	{
-		if(av[i] < '0' || av[i] > '9')
+		if (av[i] < '0' || av[i] > '9')
 			return (0);
 		i++;
 	}
 	return (1);
 }
 
-void show_err(int x)
+void	show_err(int x, char **av, t_node *stack_a, bool test)
 {
-	if(x == 0)
+	if (x == 0)
 	{
 		write(2, "Error\n", 6);
+		if (test)
+			free_char(av);
+		free_stack(&stack_a, NULL);
 		exit (1);
 	}
 }
-

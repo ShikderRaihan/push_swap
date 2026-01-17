@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   stack_index.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rshikder <rshikder@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cschwart <cschwart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 21:56:56 by rshikder          #+#    #+#             */
-/*   Updated: 2026/01/05 21:59:51 by rshikder         ###   ########.fr       */
+/*   Updated: 2026/01/15 14:03:59 by cschwart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	fill_values_array(s_node *stack, int *arr)
+void	fill_values_array(t_node *stack, int *arr)
 {
 	int	i;
 
@@ -24,6 +24,7 @@ void	fill_values_array(s_node *stack, int *arr)
 		stack = stack->next;
 	}
 }
+
 int	compute_index(int *arr, int total, int value)
 {
 	int	i;
@@ -39,7 +40,8 @@ int	compute_index(int *arr, int total, int value)
 	}
 	return (index);
 }
-void	assign_indices(s_node *stack, int *arr, int total)
+
+void	assign_indices(t_node *stack, int *arr, int total)
 {
 	while (stack)
 	{
@@ -47,7 +49,8 @@ void	assign_indices(s_node *stack, int *arr, int total)
 		stack = stack->next;
 	}
 }
-void	stack_index(s_node *stack_a)
+
+void	stack_index(t_node *stack_a)
 {
 	int		*values;
 	int		size;

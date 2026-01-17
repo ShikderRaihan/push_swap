@@ -1,0 +1,25 @@
+Initial state:
+A: [3, 2, 1, 0] (3 is head/top, 0 is tail)
+B: []
+
+After pb (push top of A to B):
+A: [2, 1, 0]
+B: [3]
+
+After sa (swap top 2 of A):
+A: [1, 2, 0]
+B: [3]
+
+After rra (reverse rotate A - move tail to head):
+A: [0, 1, 2]
+B: [3]
+
+After pa (push top of B to A):
+A: [3, 0, 1, 2]
+B: []
+
+After ra (rotate A - move head to tail):
+A: [0, 1, 2, 3]
+B: []
+
+Final: [0, 1, 2, 3] - should be OK

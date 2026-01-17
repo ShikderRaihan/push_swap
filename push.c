@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rshikder <rshikder@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cschwart <cschwart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/25 20:34:50 by rshikder          #+#    #+#             */
-/*   Updated: 2025/12/29 18:08:48 by rshikder         ###   ########.fr       */
+/*   Updated: 2026/01/15 14:06:43 by cschwart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void push(s_node **stack_a, s_node **stack_b)
+void	push(t_node **stack_a, t_node **stack_b)
 {
-	s_node *tmp;
-	
-	if(*stack_b == NULL)
+	t_node	*tmp;
+
+	if (*stack_b == NULL)
 		return ;
 	tmp = *stack_b;
 	*stack_b = tmp->next;
@@ -26,28 +26,29 @@ void push(s_node **stack_a, s_node **stack_b)
 	if (*stack_a != NULL)
 		(*stack_a)->prev = tmp;
 	tmp->prev = NULL;
-	(*stack_a)= tmp;
+	(*stack_a) = tmp;
 }
 
-void pa(s_node **stack_a, s_node **stack_b, s_flags *flags)
+void	pa(t_node **stack_a, t_node **stack_b, t_flags *flags)
 {
 	if (*stack_b)
 	{
 		push(stack_a, stack_b);
 		flags->total++;
 		flags->pa++;
-		if(!flags->bench)
+		if (!flags->bench)
 			ft_printf("pa\n");
 	}
 }
-void pb(s_node **stack_b, s_node **stack_a, s_flags *flags)
+
+void	pb(t_node **stack_b, t_node **stack_a, t_flags *flags)
 {
 	if (*stack_a)
 	{
 		push(stack_b, stack_a);
 		flags->total++;
 		flags->pb++;
-		if(!flags->bench)
+		if (!flags->bench)
 			ft_printf("pb\n");
 	}
 }

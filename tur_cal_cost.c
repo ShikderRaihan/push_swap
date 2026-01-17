@@ -3,22 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   tur_cal_cost.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rshikder <rshikder@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cschwart <cschwart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 14:50:43 by rshikder          #+#    #+#             */
-/*   Updated: 2026/01/14 15:03:53 by rshikder         ###   ########.fr       */
+/*   Updated: 2026/01/15 14:04:02 by cschwart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	node_cost(s_node *n, int len)
+int	node_cost(t_node *n, int len)
 {
 	if (n->plus_med)
 		return (n->index);
 	return (len - n->index);
 }
-int	merge_cost(s_node *src, s_node *dst, int cost_s, int cost_d)
+
+int	merge_cost(t_node *src, t_node *dst, int cost_s, int cost_d)
 {
 	if (src->plus_med == dst->plus_med)
 	{
@@ -28,7 +29,8 @@ int	merge_cost(s_node *src, s_node *dst, int cost_s, int cost_d)
 	}
 	return (cost_s + cost_d);
 }
-void	calc_cost_b(s_node *stack_a, s_node *stack_b)
+
+void	calc_cost_b(t_node *stack_a, t_node *stack_b)
 {
 	int	a_len;
 	int	b_len;
@@ -41,11 +43,13 @@ void	calc_cost_b(s_node *stack_a, s_node *stack_b)
 	{
 		cost_b = node_cost(stack_b, b_len);
 		cost_a = node_cost(stack_b->target_node, a_len);
-		stack_b->cost = merge_cost(stack_b, stack_b->target_node, cost_b, cost_a);
+		stack_b->cost = merge_cost(stack_b, stack_b->target_node, cost_b,
+				cost_a);
 		stack_b = stack_b->next;
 	}
 }
-void	calc_cost(s_node *stack_a, s_node *stack_b)
+
+void	calc_cost(t_node *stack_a, t_node *stack_b)
 {
 	int	a_len;
 	int	b_len;
@@ -58,7 +62,8 @@ void	calc_cost(s_node *stack_a, s_node *stack_b)
 	{
 		cost_a = node_cost(stack_a, a_len);
 		cost_b = node_cost(stack_a->target_node, b_len);
-		stack_a->cost = merge_cost(stack_a, stack_a->target_node, cost_a, cost_b);
+		stack_a->cost = merge_cost(stack_a, stack_a->target_node, cost_a,
+				cost_b);
 		stack_a = stack_a->next;
 	}
 }
